@@ -1,6 +1,9 @@
 # Android30daysChallenge
 
-##Day1
+Very thanks to [If you don't know how to add local image to Readme](http://felixhayashi.github.io/ReadmeGalleryCreatorForGitHub/)
+
+
+# Day1
 
 Goal: show a list view (button + Text (Dynamic row height)) with a button on it. When click on button it will go to activity B.
 * RecycleView
