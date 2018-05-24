@@ -1,9 +1,12 @@
 package com.example.shunzhang.day1;
 
 import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import java.util.List;
 
 /**
  * Created by shunzhang on 23/05/2018.
@@ -11,20 +14,27 @@ import android.widget.TextView;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
+    List<TaskModel> model;
+
+    public TaskAdapter(List<TaskModel> model){
+        this.model = model;
+    }
+
     @Override
     public TaskViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return null;
+        View viewHolder = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item,parent,false);
+        return new TaskViewHolder(viewHolder);
     }
 
     @Override
     public void onBindViewHolder(TaskViewHolder holder, int position) {
-        holder.title.setText("this is text");
 
+        holder.title.setText(model.get(position).getTitle());
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return model.size();
     }
 
     public class TaskViewHolder extends RecyclerView.ViewHolder {
