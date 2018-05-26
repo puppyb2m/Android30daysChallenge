@@ -3,8 +3,9 @@ package com.example.shunzhang.day1;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
-public class AddTaskActivity extends Activity {
+public class AddTaskActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
