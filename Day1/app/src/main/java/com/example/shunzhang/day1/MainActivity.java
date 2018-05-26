@@ -22,13 +22,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+//        Navigator.INSTANCE.navigateToAddTask(this);
         // floating button
         FloatingActionButton floatingButton = (FloatingActionButton) findViewById(R.id.fab_add_task);
         floatingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
-                startActivity(intent);
+                // basic move activity
+//                Intent intent = new Intent(MainActivity.this, AddTaskActivity.class);
+//                startActivity(intent);
+
+                // advanced move activity
+                Navigator.INSTANCE.navigateToAddTask(MainActivity.this);
             }
         });
 
