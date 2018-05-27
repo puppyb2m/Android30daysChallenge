@@ -8,6 +8,7 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,6 +48,12 @@ public class MainActivity extends AppCompatActivity {
 
         // adapter
         adapter = new TaskAdapter(modelList);
+        adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(MainActivity.this, "这是条目"+modelList.get(position).getTitle(), Toast.LENGTH_LONG).show();
+            }
+        });
         listView.setAdapter(adapter);
 
         initModel();
