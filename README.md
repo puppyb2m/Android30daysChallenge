@@ -19,3 +19,9 @@ Goal Screen Shot
 # Feature
 
 * [ButterKnife](https://www.androidhive.info/2017/10/android-working-with-butterknife-viewbinding-library/)
+
+
+# Todolist
+- [ ]Retrofit
+- [ ]Dao
+- [ ]Rxjava
