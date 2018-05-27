@@ -15,6 +15,15 @@ import java.util.List;
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
     List<TaskModel> model;
+    private OnItemClickLitener   mOnItemClickLitener;
+
+    public interface OnItemClickLitener{
+        void onItemClick(View view, int position);
+    }
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener){
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
 
     public TaskAdapter(List<TaskModel> model){
         this.model = model;
@@ -27,9 +36,18 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     }
 
     @Override
-    public void onBindViewHolder(TaskViewHolder holder, int position) {
+    public void onBindViewHolder(TaskViewHolder holder, final int position) {
 
         holder.title.setText(model.get(position).getTitle());
+
+        if (mOnItemClickLitener != null) {
+            holder.title.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    mOnItemClickLitener.onItemClick(view, position);
+                }
+            });
+        }
     }
 
     @Override
