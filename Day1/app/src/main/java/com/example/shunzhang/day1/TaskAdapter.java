@@ -1,10 +1,13 @@
 package com.example.shunzhang.day1;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.example.shunzhang.day1.Model.MovieModel;
 
 import java.util.List;
 
@@ -14,7 +17,7 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder> {
 
-    List<TaskModel> model;
+    List<MovieModel> model;
     private OnItemClickLitener   mOnItemClickLitener;
 
     public interface OnItemClickLitener{
@@ -25,8 +28,13 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
 
-    public TaskAdapter(List<TaskModel> model){
+    public TaskAdapter(List<MovieModel> model){
         this.model = model;
+    }
+
+    public void updateModel(List<MovieModel> model){
+        this.model = model;
+        this.notifyDataSetChanged();
     }
 
     @Override
@@ -39,6 +47,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public void onBindViewHolder(TaskViewHolder holder, final int position) {
 
         holder.title.setText(model.get(position).getTitle());
+        Log.d("testChris", "model.get(position).getTitle()");
 
         if (mOnItemClickLitener != null) {
             holder.title.setOnClickListener(new View.OnClickListener() {

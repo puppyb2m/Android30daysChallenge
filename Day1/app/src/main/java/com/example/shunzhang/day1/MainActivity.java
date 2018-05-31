@@ -2,6 +2,7 @@ package com.example.shunzhang.day1;
 
 import android.content.Intent;
 import android.nfc.Tag;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -27,6 +28,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     private List<TaskModel> modelList = new ArrayList<>();
+    private List<MovieModel> movies = new ArrayList<>();
     private TaskAdapter adapter;
     private final static String API_KEY = "15d347a71dd5bbb5315dad6dcc269815";
     private static final String TAG = MainActivity.class.getSimpleName();
@@ -35,9 +37,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        // FIRST REQUEST
-        firstRequest();
 
 //        Navigator.INSTANCE.navigateToAddTask(this);
         // floating button
@@ -63,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         listView.setLayoutManager(manager);
 
         // adapter
-        adapter = new TaskAdapter(modelList);
+        adapter = new TaskAdapter(movies);
         adapter.setOnItemClickLitener(new TaskAdapter.OnItemClickLitener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -72,8 +71,10 @@ public class MainActivity extends AppCompatActivity {
         });
         listView.setAdapter(adapter);
 
-        initModel();
+        // FIRST REQUEST
+        firstRequest();
     }
+
 
     private void initModel(){
         // model
@@ -103,8 +104,7 @@ public class MainActivity extends AppCompatActivity {
         call.enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                List<MovieModel> model = response.body().getResults();
-                Log.d(TAG, "Number of movies received: " + model.size());
+                adapter.updateModel(response.body().getResults());
             }
 
             @Override
