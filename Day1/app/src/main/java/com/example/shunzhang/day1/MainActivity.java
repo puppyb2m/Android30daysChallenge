@@ -1,27 +1,43 @@
 package com.example.shunzhang.day1;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.shunzhang.day1.API.APIInterface;
+import com.example.shunzhang.day1.API.ApiClient;
+import com.example.shunzhang.day1.Model.MovieModel;
+import com.example.shunzhang.day1.Model.MovieResponse;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
 
     private List<TaskModel> modelList = new ArrayList<>();
     private TaskAdapter adapter;
+    private final static String API_KEY = "15d347a71dd5bbb5315dad6dcc269815";
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // FIRST REQUEST
+        firstRequest();
 
 //        Navigator.INSTANCE.navigateToAddTask(this);
         // floating button
@@ -70,5 +86,32 @@ public class MainActivity extends AppCompatActivity {
         modelList.add(model3);
 
         adapter.notifyDataSetChanged();
+    }
+
+    private void firstRequest(){
+        if (API_KEY.isEmpty()) {
+            Toast.makeText(this.getApplicationContext(), "No API key", Toast.LENGTH_LONG).show();
+            return ;
+        }
+
+
+        // create api Client
+        APIInterface client = ApiClient.getClient().create(APIInterface.class);
+
+        // use which request
+        Call<MovieResponse> call = client.getTopRatedMovie(API_KEY);
+        call.enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                List<MovieModel> model = response.body().getResults();
+                Log.d(TAG, "Number of movies received: " + model.size());
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+                Log.d(TAG, t.toString());
+            }
+        });
+
     }
 }
