@@ -49,7 +49,8 @@ public class MainActivity extends AppCompatActivity {
 //                startActivity(intent);
 
                 // advanced move activity
-                Navigator.INSTANCE.navigateToAddTask(MainActivity.this);
+//                Navigator.INSTANCE.navigateToAddTask(MainActivity.this);
+                Navigator.INSTANCE.navigateToRandomQuote(MainActivity.this);
             }
         });
 

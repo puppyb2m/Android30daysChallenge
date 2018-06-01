@@ -22,6 +22,9 @@
         <activity
             android:name=".AddTaskActivity">
         </activity>
+        <activity
+            android:name=".RandomQuote.RandomQuoteActivity">
+        </activity>
     </application>
 
 </manifest>
