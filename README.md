@@ -22,6 +22,7 @@ Goal Screen Shot
 
 
 # Todolist
-- [ ]Retrofit
+- [X]Retrofit
+- [X]MVP 
 - [ ]Dao
 - [ ]Rxjava

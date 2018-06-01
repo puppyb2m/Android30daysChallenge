@@ -3,6 +3,8 @@ package com.example.shunzhang.day1;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.shunzhang.day1.RandomQuote.RandomQuoteActivity;
+
 public enum Navigator {
 
     INSTANCE;
@@ -10,6 +12,13 @@ public enum Navigator {
     public void navigateToAddTask(Context context){
         if(context != null){
             Intent callingIntent = AddTaskActivity.getCallingIntent(context);
+            context.startActivity(callingIntent);
+        }
+    }
+
+    public void navigateToRandomQuote(Context context){
+        if(context != null){
+            Intent callingIntent = RandomQuoteActivity.getCallingIntent(context);
             context.startActivity(callingIntent);
         }
     }
