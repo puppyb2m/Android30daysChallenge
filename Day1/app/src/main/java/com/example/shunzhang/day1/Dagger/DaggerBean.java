@@ -16,7 +16,7 @@ public class DaggerBean {
         return hello;
     }
 
-    public void setHello(String hello) {
+    public DaggerBean(String hello) {
         this.hello = hello;
     }
 }

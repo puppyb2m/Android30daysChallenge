@@ -25,6 +25,9 @@
         <activity
             android:name=".RandomQuote.RandomQuoteActivity">
         </activity>
+        <activity
+            android:name=".Dagger.DaggerActivity2">
+        </activity>
     </application>
 
 </manifest>
