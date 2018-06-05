@@ -26,6 +26,11 @@ public class FavBean {
         return id;
     }
 
+    public FavBean(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
