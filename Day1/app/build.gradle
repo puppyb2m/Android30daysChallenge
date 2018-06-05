@@ -16,6 +16,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    dataBinding {
+        enabled = true
+    }
+
+//    compileSdkVersion 27
+//
+//    defaultConfig {
+//        applicationId "com.android.application"
+//        minSdkVersion 16
+//
+//    }
 }
 
 dependencies {

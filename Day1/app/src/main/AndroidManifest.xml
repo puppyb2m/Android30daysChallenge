@@ -28,6 +28,9 @@
         <activity
             android:name=".Livedata.FavActivity">
         </activity>
+        <activity
+            android:name=".DataBinding.DataBindingActivity">
+        </activity>
     </application>
 
 </manifest>
