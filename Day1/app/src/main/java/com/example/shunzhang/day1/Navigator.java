@@ -3,6 +3,7 @@ package com.example.shunzhang.day1;
 import android.content.Context;
 import android.content.Intent;
 
+import com.example.shunzhang.day1.Livedata.FavActivity;
 import com.example.shunzhang.day1.RandomQuote.RandomQuoteActivity;
 
 public enum Navigator {
@@ -18,7 +19,7 @@ public enum Navigator {
 
     public void navigateToRandomQuote(Context context){
         if(context != null){
-            Intent callingIntent = RandomQuoteActivity.getCallingIntent(context);
+            Intent callingIntent = FavActivity.getCallingIntent(context);
             context.startActivity(callingIntent);
         }
     }

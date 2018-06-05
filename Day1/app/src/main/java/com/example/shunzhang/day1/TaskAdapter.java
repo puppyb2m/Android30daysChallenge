@@ -47,7 +47,6 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     public void onBindViewHolder(TaskViewHolder holder, final int position) {
 
         holder.title.setText(model.get(position).getTitle());
-        Log.d("testChris", "model.get(position).getTitle()");
 
         if (mOnItemClickLitener != null) {
             holder.title.setOnClickListener(new View.OnClickListener() {
