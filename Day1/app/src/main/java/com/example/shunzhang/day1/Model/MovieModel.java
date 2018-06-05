@@ -59,6 +59,11 @@ public class MovieModel {
         this.voteAverage = voteAverage;
     }
 
+    public MovieModel(Integer id,String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public String getPosterPath() {
         return posterPath;
     }
